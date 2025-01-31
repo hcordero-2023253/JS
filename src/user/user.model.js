@@ -26,7 +26,7 @@ const userSchema = Schema(
             type:String,
             required: [true,'Email is required'],
             //Validacion personalizada:
-            match:[/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g]//Regex para validar el email, pero no es recomendable usarlo aqui.
+            //match:[/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g]//Regex para validar el email, pero no es recomendable usarlo aqui.
         },
         password:{
             type: String,
@@ -35,20 +35,22 @@ const userSchema = Schema(
             masLength: [100, 'Password can not be longer than 100 characters'],
             //match: [/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,16}$/gm]
         },
+        profilePicture:{
+            type: String
+        },
         phone:{
             type: String,
             required: [true,'Phone is required'],
-            minLength: [9, 'Phone must be at least 9 digits long'],
+            minLength: [8, 'Phone must be at least 8 digits long'],
             maxLength: [15, 'Phone can not be longer than 15 digits'],
-            match: [/^\+[0-9]{1,3} [0-9]{3,5}-[0-9]{4}$/]
+            //match: [/^\+[0-9]{1,3} [0-9]{3,5}-[0-9]{4}$/]
         },
         role:{
             type: String,
             required: [true,'Role is required'],
             uppercase: true,
             enum: ['ADMIN', 'USER']
-        },
-
+        }
     }
 )
 

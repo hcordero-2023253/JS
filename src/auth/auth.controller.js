@@ -20,6 +20,8 @@ export const register = async (req, res) => {
         user.password = await encrypt(user.password);
         //Asignar rol por defecto
         user.role = 'USER';
+        //Asignar profilePicture
+        user.profilePicture = req.file.filename ?? null 
         //Guardar
         await user.save();
         //Responder al usuario

@@ -10,6 +10,8 @@ import morgan from 'morgan'//Logs
 import cors from 'cors'//Acceso al API
 import helmet from 'helmet'//Seguridad para HTTP
 import authRoutes from '../src/auth/auth.routes.js'
+import animalRoutes from '../src/animal/animal.router.js'
+import { limiter } from '../middlewares/rate.limit.js'
 
 //Configuraciónes de express
 const configs = (app)=>{
@@ -18,10 +20,12 @@ const configs = (app)=>{
     app.use(cors())
     app.use(helmet())
     app.use(morgan('dev'))
+    app.use(limiter)//valida las solicitudes en X tiempo
 }
 
 const routes = (app)=>{
     app.use(authRoutes)
+    app.use(animalRoutes)
 }
 
 //Ejecutar el servidor

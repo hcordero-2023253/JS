@@ -3,10 +3,11 @@ import { Router } from "express";
 import {
         login,
         register,
-        test,
-        postAnimal } from "./auth.controller.js";
+        test } from "./auth.controller.js";
         
 import { validateJwt } from "../../middlewares/validate.jwt.js";
+import { registerValidattor } from "../../middlewares/validators.js";
+import { uploadProfilePicture } from "../../middlewares/multer.uploads.js";
 
 const api = Router()
 
@@ -14,10 +15,8 @@ const api = Router()
 api.get('/test',validateJwt,test)
 
 //Rutas publicas
-api.post('/register',register)
+api.post('/register',[uploadProfilePicture.single("profilePicture"),registerValidattor],register)
 api.post('/login', login)
-
-api.get('/animal', postAnimal)
 
 //Exporto las rutas
 export default api;
