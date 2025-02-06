@@ -9,3 +9,11 @@ export const existUsername = async (username) => {
         throw new Error(`Username${username} is already taken`);
     }
 }
+
+export const existEmail = async (email) => {
+    const alreadyUser = await User.findOne({ email });
+    if (alreadyUser) {
+        console.error(`Email${email} is already taken`);
+        throw new Error(`Email${email} is already taken`);
+    }
+}

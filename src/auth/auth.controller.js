@@ -38,9 +38,14 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
     try {
         //Capturar los datos(body)
-        let {username, password} = req.body;
+        let {userLoggin, password} = req.body;
         //Validar qie el usuario existe
-        let user = await User.findOne({username});
+        let user = await User.findOne({
+            $or:[ //Subfuncion de OR | espera un [] de busquedas
+                {username: userLoggin },
+                { email: userLoggin}
+                ]
+        });
         
         if(user && await checkPassword(user.password, password)){
             //MAS ADELANTE: Generar el token
@@ -69,9 +74,9 @@ export const login = async (req, res) => {
 export const changePassword = async (req, res) => {
     try {
         //Capturar los datos(body)
-        let {password, newPassword} = req.body;
+        let {id, password, newPassword} = req.body;
         //Validar qie el usuario existe
-        let user = await User.findById(req.user._id);
+        let user = await User.findById(id);
         //Validar la contraseña
         if(user && await checkPassword(user.password, password)){
             //Encriptar la nueva contraseña

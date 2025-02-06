@@ -27,6 +27,6 @@ api.post('/register',[uploadProfilePicture.single("profilePicture")
 
 api.post('/login', login)
 
-api.put('/password', changePassword)
+api.put('/password/:id', changePassword)
 //Exporto las rutas
 export default api;

@@ -25,6 +25,7 @@ const userSchema = Schema(
         email:{
             type:String,
             required: [true,'Email is required'],
+            unique: true
             //Validacion personalizada:
             //match:[/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g]//Regex para validar el email, pero no es recomendable usarlo aqui.
         },
@@ -53,6 +54,13 @@ const userSchema = Schema(
         }
     }
 )
+
+//Modificar el toJSON para excluir datos en la respuesta
+userSchema.methods.toJSON = function(){
+    //Elimina los datos que no queremos que se muestren en la respuesta
+    const { __v, password, ...user } = this.toObject();//Sirve para convertir un documento de MongoDB a Objeto de JavaScript
+    return user;
+}
 
 //Crear y exportar el modelo
 export default model('User', userSchema);
