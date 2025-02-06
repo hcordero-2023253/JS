@@ -2,6 +2,7 @@
 import User from '../user/user.model.js';
 import { checkPassword, encrypt } from '../../utils/crypto.js';
 import { generateJwt } from '../../utils/jwt.js';
+import e from 'express';
 
 //Esto es recomendable para saber si todos los archivos estan conectado 
 export const test = (req, res)=>{
@@ -61,5 +62,27 @@ export const login = async (req, res) => {
     } catch (error) {
         console.error(error);
         return res.status(500).send({message:'Generar error with login',error})
+    }
+}
+
+//Cambiar password
+export const changePassword = async (req, res) => {
+    try {
+        //Capturar los datos(body)
+        let {password, newPassword} = req.body;
+        //Validar qie el usuario existe
+        let user = await User.findById(req.user._id);
+        //Validar la contraseña
+        if(user && await checkPassword(user.password, password)){
+            //Encriptar la nueva contraseña
+            user.password = await encrypt(newPassword);
+            //Guardar
+            await user.save();
+            //Responder al usuario
+            return res.send({message: 'Password changed successfully'});
+        }
+    } catch (error) {
+        console.error(error);
+        return res.status(500).send({message:'Generar error with change password',error})
     }
 }
