@@ -1,16 +1,12 @@
 import Animal from '../animal/animal.model.js';
 
-export const testing = (req, res)=>{
-    console.log('Test is running')
-    res.send({msg: 'Test is running'})
-}
 
 export const getAnimals = async (req, res) => {
     try {
         return res.send(await Animal.find());
     } catch (error) {
         console.error(error);
-        return res.status(500).send({msg: 'Not found animal',error}); 
+        return res.status(500).send({message: 'Not found animal',error}); 
     }
 }
 
@@ -31,10 +27,10 @@ export const postAnimal = async (req, res) => {
         let data = req.body;
         let animal = new Animal(data);
         await animal.save();
-        return res.status(201).send({msg: 'Animal created successfully', animal});
+        return res.status(201).send({message: 'Animal created successfully', animal});
     } catch (error) {
         console.error(error);
-        return res.status(500).send({msg: 'Cannot add animal',error})
+        return res.status(500).send({message: 'Cannot add animal',error})
     }
 }
 
@@ -43,10 +39,10 @@ export const putAnimals = async (req, res) => {
         let id = req.params.id;
         let data = req.body;
         let animal = await Animal.findByIdAndUpdate(id,data,{new: true});
-        return res.send({msg: 'Animal updated successfully', animal});
+        return res.send({message: 'Animal updated successfully', animal});
     } catch (error) {
         console.error(error);
-        return res.status(500).send({msg: 'Cannot update animal',error})
+        return res.status(500).send({message: 'Cannot update animal',error})
     }
 }
 
@@ -54,9 +50,9 @@ export const deleteAnimal = async (req, res) => {
     try {
         let id = req.params.id;
         let animal = await Animal.findByIdAndDelete(id);
-        return res.send({msg: 'Animal deleted successfully', animal});
+        return res.send({message: 'Animal deleted successfully', animal});
     } catch (error) {
         console.error(error);
-        return res.status(500).send({msg: 'Cannot delete animal',error})
+        return res.status(500).send({message: 'Cannot delete animal',error})
     }
 }
