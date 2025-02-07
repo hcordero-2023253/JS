@@ -48,3 +48,26 @@ export const getOne = async (req, res) => {
             message: 'Error al obtener usuario', error });
     }
 }
+
+//Actualizar datos generales
+export const update = async (req, res) => {
+    try {
+        let {id} = req.params;
+        let data = req.body;
+        let user = await User.findByIdAndUpdate(id, data, { new: true }); 
+        if (!user) return res.status(404).send({
+            success: false,
+            message: 'User not found'
+        })
+        return res.send({
+            success: true,  
+            message: 'Usuario actualizado', user
+        })
+    } catch (error) {
+        console.error('Error al obtener un usuario:', error);
+        return res.status(500).send({
+            success: false,
+            message: 'Error al actualizar usuario',error
+        })
+    }
+}

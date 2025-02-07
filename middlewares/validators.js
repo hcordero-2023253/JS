@@ -1,7 +1,7 @@
 //Validar campos en las rutas
 import { body } from "express-validator";
-import { validateErrors } from "./validate.errors.js";
-import { existEmail, existUsername } from "../utils/db.validator.js";
+import { validateErrors, validateErrorsFiles } from "./validate.errors.js";
+import { existEmail, existUsername, notRequiredFlied } from "../utils/db.validator.js";
 
 
 //Arreglo de validaciones (por cada ruta)
@@ -13,4 +13,13 @@ export const registerValidattor =[
     body('password','Password cannot be empty').notEmpty().isStrongPassword().withMessage('The Passsword must be strong').isLength({min:8}),
     body('phone','Phone cannot be empty').notEmpty().isMobilePhone()   ,
     validateErrors
+]
+
+export const updateUserValidator =[
+    body('username').optional().notEmpty().toLowerCase().custom((username, {req})=> existUsername(username, req.user)),
+    body('email').optional().notEmpty().isEmail().custom((email, {req})=> existEmail(email, req.user)),
+    body('password').optional().notEmpty().custom(notRequiredFlied),
+    body('profilePicure').optional().notEmpty().custom(notRequiredFlied),
+    body('role').optional().notEmpty().custom(notRequiredFlied),
+    validateErrorsFiles
 ]
