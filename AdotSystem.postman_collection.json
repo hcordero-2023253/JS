@@ -1,0 +1,420 @@
+{
+	"info": {
+		"_postman_id": "8d96c59a-f2e0-4551-965c-19be73a25cca",
+		"name": "AdotSystem",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37956978"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Testeo con autorizacion",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2E2YzZkZjIyZTc4YjQ1N2Y3YTcxMzciLCJ1c2VybmFtZSI6ImxyYXVsIiwibmFtZSI6Ikx1Y2FzIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3Mzg5ODMzODYsImV4cCI6MTczODk5NDE4Nn0.ORfXfiC10H2hpm6Lei5ODr19elRt-g1Lk6fIwOfCIbk",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3605/test",
+							"host": [
+								"localhost"
+							],
+							"port": "3605",
+							"path": [
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Paginacion",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2E2YzZkZjIyZTc4YjQ1N2Y3YTcxMzciLCJ1c2VybmFtZSI6ImxyYXVsIiwibmFtZSI6Ikx1Y2FzIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3Mzg5ODMzODYsImV4cCI6MTczODk5NDE4Nn0.ORfXfiC10H2hpm6Lei5ODr19elRt-g1Lk6fIwOfCIbk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3605/v1/user",
+							"host": [
+								"localhost"
+							],
+							"port": "3605",
+							"path": [
+								"v1",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Lucas",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Raul",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "lraul",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "lraul@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Lr4uL@1123",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "98885411",
+									"description": "\n",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "ADMIN",
+									"type": "text"
+								},
+								{
+									"key": "profilePicture",
+									"type": "file",
+									"src": "/C:/Users/hecto/Pictures/game.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3605/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3605",
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userLoggin",
+									"value": "lraul",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Lr4uL@1123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3605/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3605",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar datos generales",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2E2YzZkZjIyZTc4YjQ1N2Y3YTcxMzciLCJ1c2VybmFtZSI6ImxyYXVsIiwibmFtZSI6Ikx1Y2FzIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3Mzg5ODMzODYsImV4cCI6MTczODk5NDE4Nn0.ORfXfiC10H2hpm6Lei5ODr19elRt-g1Lk6fIwOfCIbk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "asdasdad",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "hectorolica8141@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3605/v1/user/update/67a6c6df22e78b457f7a7137",
+							"host": [
+								"localhost"
+							],
+							"port": "3605",
+							"path": [
+								"v1",
+								"user",
+								"update",
+								"67a6c6df22e78b457f7a7137"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Animals",
+			"item": [
+				{
+					"name": "Obtener animal",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3605/getanimal",
+							"host": [
+								"localhost"
+							],
+							"port": "3605",
+							"path": [
+								"getanimal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agregar animal",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Snik",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Es un perro muy jugueton",
+									"type": "text"
+								},
+								{
+									"key": "age",
+									"value": "11",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "Perro",
+									"type": "text"
+								},
+								{
+									"key": "keeper",
+									"value": "67a545a5c32b1df75b35a172",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3605/postanimals",
+							"host": [
+								"localhost"
+							],
+							"port": "3605",
+							"path": [
+								"postanimals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar animal",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2E2YzZkZjIyZTc4YjQ1N2Y3YTcxMzciLCJ1c2VybmFtZSI6ImxyYXVsIiwibmFtZSI6ImFzZGFzZGFkIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3Mzg5ODU0NTksImV4cCI6MTczODk5NjI1OX0.fpPC7NwTz1se2mIriEs1nX_C4JTKeMmRfzlPIoU3uVw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Galaxia",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Es un perro muy jugueton",
+									"type": "text"
+								},
+								{
+									"key": "age",
+									"value": "11",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "Perro",
+									"type": "text"
+								},
+								{
+									"key": "keeper",
+									"value": "67a545a5c32b1df75b35a172",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3605/putanimal/67a6d8e302f1cbfe155349ab",
+							"host": [
+								"localhost"
+							],
+							"port": "3605",
+							"path": [
+								"putanimal",
+								"67a6d8e302f1cbfe155349ab"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete animal",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2E2YzZkZjIyZTc4YjQ1N2Y3YTcxMzciLCJ1c2VybmFtZSI6ImxyYXVsIiwibmFtZSI6ImFzZGFzZGFkIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3Mzg5ODU0NTksImV4cCI6MTczODk5NjI1OX0.fpPC7NwTz1se2mIriEs1nX_C4JTKeMmRfzlPIoU3uVw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3605/deleteanimal/67a6d8e302f1cbfe155349ab",
+							"host": [
+								"localhost"
+							],
+							"port": "3605",
+							"path": [
+								"deleteanimal",
+								"67a6d8e302f1cbfe155349ab"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cita",
+			"item": [
+				{
+					"name": "Crear cita",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2E2YzZkZjIyZTc4YjQ1N2Y3YTcxMzciLCJ1c2VybmFtZSI6ImxyYXVsIiwibmFtZSI6ImFzZGFzZGFkIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3Mzg5ODU0NTksImV4cCI6MTczODk5NjI1OX0.fpPC7NwTz1se2mIriEs1nX_C4JTKeMmRfzlPIoU3uVw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "date",
+									"value": "2025-04-11T06:30:00",
+									"type": "text"
+								},
+								{
+									"key": "reason",
+									"value": "Corte",
+									"type": "text"
+								},
+								{
+									"key": "user",
+									"value": "67a6cfebb0d934462294541e",
+									"type": "text"
+								},
+								{
+									"key": "animal",
+									"value": "67a6d8e302f1cbfe155349ab",
+									"type": "text"
+								},
+								{
+									"key": "state",
+									"value": "CANCELADO",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3605/crearCita",
+							"host": [
+								"localhost"
+							],
+							"port": "3605",
+							"path": [
+								"crearCita"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

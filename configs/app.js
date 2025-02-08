@@ -12,6 +12,7 @@ import helmet from 'helmet'//Seguridad para HTTP
 import authRoutes from '../src/auth/auth.routes.js'
 import animalRoutes from '../src/animal/animal.router.js'
 import userRoutes from '../src/user/user.router.js'
+import citaRoutes from '../src/apointment/apointment.router.js'
 import { limiter } from '../middlewares/rate.limit.js'
 
 //Configuraciónes de express
@@ -27,6 +28,7 @@ const configs = (app)=>{
 const routes = (app)=>{
     app.use(authRoutes)
     app.use(animalRoutes)
+    app.use(citaRoutes)
     //Versión del API y entidad
     app.use('/v1/user',userRoutes)
 }

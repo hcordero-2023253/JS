@@ -3,19 +3,19 @@
 import { Schema, model } from "mongoose";
 
 const citaSchema = new Schema({
-    name:{
+    reason:{
         type: String,
-        required: true
+        required: [true, 'Reason is required']
     },
     date: { 
         type: Date, 
-        required: true 
+        required: [true, 'Date is required'] 
     },
     state:{
         type: String,
         uppercase: true,
         required: true,
-        emum: ['PENDIENTE', 'ATENDIDO', 'CANCELADO']
+        enum: ['PENDIENTE', 'ATENDIDO', 'CANCELADO']
     },
     user:{
         type: Schema.Types.ObjectId,
@@ -26,7 +26,7 @@ const citaSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Animal',
         required: [true, 'Animal is required']
-    },
+    }
 })
 
 export default model('Cita', citaSchema);

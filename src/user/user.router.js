@@ -7,10 +7,11 @@ import { getAll,
                 } from './user.controller.js';
 import { validateJwt } from '../../middlewares/validate.jwt.js';
 import { updateUserValidator } from '../../middlewares/validators.js';
+
 const api = Router()
 
-api.get('/:id',getOne)
-api.get('/',getAll) 
+api.get('/:id',validateJwt,getOne)
+api.get('/',validateJwt,getAll) 
 
                       //Lo inyecta  & lo llama  
 api.put('/update/:id', [validateJwt, updateUserValidator],update)
